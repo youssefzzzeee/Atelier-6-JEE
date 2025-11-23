@@ -31,4 +31,4 @@ java -jar target/maternelle-0.0.1-SNAPSHOT.jar
 
 **Diagram:**
 
-
+![Diagramme](https://github.com/youssefzzzeee/Atelier-6-JEE/blob/main/diagramme.png?raw=true)
