@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Formulaire Étudiant</title></head>
+<body>
+<h1>Ajouter un Étudiant</h1>
+<form th:action="@{/etudiants/save}" th:object="${etudiant}" method="post">
+    <input type="text" th:field="*{nom}" placeholder="Nom" required />
+    <input type="text" th:field="*{prenom}" placeholder="Prénom" required />
+    <input type="text" th:field="*{classe}" placeholder="Classe" />
+    <input type="email" th:field="*{emailParents}" placeholder="Email Parents" />
+    <button type="submit">Enregistrer</button>
+</form>
+</body>
+</html>

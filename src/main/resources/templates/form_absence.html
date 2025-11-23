@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Nouvelle Absence</title></head>
+<body>
+<h1>Enregistrer une absence</h1>
+<form th:action="@{/absences/save}" th:object="${absence}" method="post">
+
+    <label>Date :</label>
+    <input type="date" th:field="*{dateAbsence}" required />
+    <br/>
+
+    <label>Motif :</label>
+    <input type="text" th:field="*{motif}" />
+    <br/>
+
+    <label>Etudiant :</label>
+    <select th:field="*{etudiant}">
+        <option th:each="e : ${etudiants}"
+                th:value="${e.id}"
+                th:text="${e.nom + ' ' + e.prenom}"></option>
+    </select>
+    <br/>
+
+    <button type="submit">Valider</button>
+</form>
+</body>
+</html>

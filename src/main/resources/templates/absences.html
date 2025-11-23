@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Liste des absences</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 24px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background: #f3f4f6; text-align: left; }
+        a.button { display: inline-block; padding: 8px 12px; background:#2563eb; color:#fff; text-decoration:none; border-radius:4px; }
+    </style>
+</head>
+<body>
+<h1>Absences</h1>
+
+<p>
+    <a class="button" th:href="@{/new}">Nouvelle absence</a>
+    <a style="margin-left:12px;" th:href="@{/etudiants}">Etudiants</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Motif</th>
+            <th>Justifiée</th>
+            <th>Etudiant</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="absence : ${listAbsences}">
+            <td th:text="${absence.id}">1</td>
+            <td th:text="${#dates.format(absence.dateAbsence, 'yyyy-MM-dd')}">2025-01-01</td>
+            <td th:text="${absence.motif}">Maladie</td>
+            <td th:text="${absence.estJustifiee} ? 'Oui' : 'Non'">Non</td>
+            <td th:text="${absence.etudiant != null ? (absence.etudiant.prenom + ' ' + absence.etudiant.nom) : '—'}">Jean Dupont</td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(listAbsences)}">
+            <td colspan="5">Aucune absence enregistrée.</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
